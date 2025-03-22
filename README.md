@@ -1,4 +1,11 @@
-# README
+# TripManager
+![repo header](.github/repocard.png)
+Created by Charalampos Fanoulis during their mandate as Local Web Project Administrator for ESN Western Macedonia
+
+### Contributing
+Fork the repo & create a pull request.
+<details>
+<summary>First time working with RedwoodJS? Open here for the Redwood Quickstart</summary>
 
 Welcome to [RedwoodJS](https://redwoodjs.com)!
 
@@ -120,3 +127,5 @@ The best way to learn Redwood is by going through the comprehensive [tutorial](h
 
 - Stay updated: read [Forum announcements](https://community.redwoodjs.com/c/announcements/5), follow us on [Twitter](https://twitter.com/redwoodjs), and subscribe to the [newsletter](https://redwoodjs.com/newsletter)
 - [Learn how to contribute](https://redwoodjs.com/docs/contributing)
+
+</details>
