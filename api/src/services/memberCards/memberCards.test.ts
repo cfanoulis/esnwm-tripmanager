@@ -1,6 +1,8 @@
 import type { MemberCard } from '@prisma/client';
 
-import { memberCards, memberCard, createMemberCard, updateMemberCard, deleteMemberCard } from './memberCards';
+import { ServiceValidationError } from '@redwoodjs/api';
+
+import { memberCards, memberCard, createMemberCard, deleteMemberCard } from './memberCards';
 import type { StandardScenario } from './memberCards.scenarios';
 
 // Generated boilerplate tests do not account for all circumstances
@@ -24,24 +26,26 @@ describe('memberCards', () => {
 
 	scenario('creates a memberCard', async (scenario: StandardScenario) => {
 		const result = await createMemberCard({
-			input: { cardnumber: 'String', expiry: '2025-03-25T19:51:35.782Z', section: 'String', personId: scenario.memberCard.two.personId }
+			input: { cardnumber: '1900007BBSK', personId: scenario.memberCard.two.personId }
 		});
 
-		expect(result.cardnumber).toEqual('String');
-		expect(result.expiry).toEqual(new Date('2025-03-25T19:51:35.782Z'));
-		expect(result.section).toEqual('String');
+		expect(result.cardnumber).toEqual('1900007BBSK');
+		expect(result.expiry).toEqual(new Date('2024-11-26'));
+		expect(result.section).toEqual('GR-KOZA-TEI');
 		expect(result.personId).toEqual(scenario.memberCard.two.personId);
 	});
 
-	scenario('updates a memberCard', async (scenario: StandardScenario) => {
-		const original = (await memberCard({ cardnumber: scenario.memberCard.one.cardnumber })) as MemberCard;
-		const result = await updateMemberCard({
-			cardnumber: original.cardnumber,
-			input: { cardnumber: 'String2' }
-		});
-
-		expect(result.cardnumber).toEqual('String2');
+	scenario('throws on invalid card numbers', async (scenario: StandardScenario) => {
+		const fcn = async () => await createMemberCard({ input: { cardnumber: 'INVALIDIDBABY', personId: scenario.memberCard.two.personId } });
+		expect(fcn).rejects.toThrow(ServiceValidationError);
 	});
+
+	scenario('throws on valid but non-existent numbers', async (scenario: StandardScenario) => {
+		const fcn = async () => await createMemberCard({ input: { cardnumber: '0000007BBSk', personId: scenario.memberCard.two.personId } });
+		expect(fcn).rejects.toThrow(ServiceValidationError);
+	});
+
+	//TODO: throw on expired cards
 
 	scenario('deletes a memberCard', async (scenario: StandardScenario) => {
 		const original = (await deleteMemberCard({ cardnumber: scenario.memberCard.one.cardnumber })) as MemberCard;

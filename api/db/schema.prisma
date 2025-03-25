@@ -72,7 +72,7 @@ model MemberCard {
   section    String
 
   person   Person @relation(fields: [personId], references: [id], onDelete: Restrict)
-  personId Int    @unique
+  personId Int
 }
 
 enum PaymentMethod {

@@ -6,18 +6,18 @@ export const standard = defineScenario<Prisma.MemberCardCreateArgs>({
 	memberCard: {
 		one: {
 			data: {
-				cardnumber: 'String',
+				cardnumber: '2191477KZF4',
 				expiry: '2025-03-25T19:51:35.984Z',
-				section: 'String',
-				person: { create: { firstname: 'String', lastname: 'String', email: 'String', phone: 'String' } }
+				section: 'GR-KOZA-TEI',
+				person: { create: { firstname: 'First', lastname: 'Person', email: 'String', phone: 'String' } }
 			}
 		},
 		two: {
 			data: {
-				cardnumber: 'String',
+				cardnumber: '2005477KZF6',
 				expiry: '2025-03-25T19:51:36.004Z',
-				section: 'String',
-				person: { create: { firstname: 'String', lastname: 'String', email: 'String', phone: 'String' } }
+				section: 'GR-THES-TEI',
+				person: { create: { firstname: 'Last', lastname: 'Person', email: 'String', phone: 'String' } }
 			}
 		}
 	}
