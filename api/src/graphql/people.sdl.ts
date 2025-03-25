@@ -16,7 +16,7 @@ export const schema = gql`
 		payments: [Payment]!
 
 		"Description for esncard."
-		esncard: [ESNCard]!
+		esncard: [MemberCard]!
 
 		"Description for firstname."
 		firstname: String!

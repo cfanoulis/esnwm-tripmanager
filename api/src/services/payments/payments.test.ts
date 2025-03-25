@@ -24,12 +24,12 @@ describe('payments', () => {
 
 	scenario('creates a payment', async (scenario: StandardScenario) => {
 		const result = await createPayment({
-			input: { personId: scenario.payment.two.personId, registrationId: scenario.payment.two.registrationId, amount: 1425914, type: 'CASH' }
+			input: { personId: scenario.payment.two.personId, registrationId: scenario.payment.two.registrationId, amount: 1726696, type: 'CASH' }
 		});
 
 		expect(result.personId).toEqual(scenario.payment.two.personId);
 		expect(result.registrationId).toEqual(scenario.payment.two.registrationId);
-		expect(result.amount).toEqual(1425914);
+		expect(result.amount).toEqual(1726696);
 		expect(result.type).toEqual('CASH');
 	});
 
@@ -37,10 +37,10 @@ describe('payments', () => {
 		const original = (await payment({ id: scenario.payment.one.id })) as Payment;
 		const result = await updatePayment({
 			id: original.id,
-			input: { amount: 7137765 }
+			input: { amount: 3164819 }
 		});
 
-		expect(result.amount).toEqual(7137765);
+		expect(result.amount).toEqual(3164819);
 	});
 
 	scenario('deletes a payment', async (scenario: StandardScenario) => {
